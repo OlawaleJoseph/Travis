@@ -10,7 +10,7 @@
     "lint": "./node_modules/.bin/eslint app.js",
     "test:cover": "cross-env NODE_ENV=test nyc npm test",
     "test": "cross-env NODE_ENV=test nyc --require @babel/register --require @babel/polyfill mocha --timeout 10000 --exit",
-    "coverage": "nyc mocha && nyc report --reporter=text-lcov | coveralls --exit"
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-lcov mocha --exit"
   },
   "nyc": {
     "require": [
