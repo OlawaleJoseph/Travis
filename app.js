@@ -13,9 +13,9 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/accounts', validateToken, accountRouter);
 app.use('/api/v1/transactions', validateToken, transactionRouter);
 
-
-// app.listen(3000, () => {
-//   console.log('App is istening on Port 3000');
-// });
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`App is istening on Port ${port}`);
+});
 
 export default app;

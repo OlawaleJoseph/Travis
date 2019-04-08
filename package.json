@@ -9,8 +9,8 @@
     "start": "nodemon --exec babel-node app.js",
     "lint": "./node_modules/.bin/eslint app.js",
     "test:cover": "cross-env NODE_ENV=test nyc npm test",
-    "test": "cross-env NODE_ENV=test nyc --require @babel/register --require @babel/polyfill mocha --timeout 5000",
-    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-lcov mocha"
+    "test": "cross-env NODE_ENV=test nyc --require @babel/register --require @babel/polyfill mocha --timeout 5000 --exit",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-lcov mocha --exit"
   },
   "nyc": {
     "require": [
