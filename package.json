@@ -8,9 +8,18 @@
     "dev-start": "babel-watch app.js",
     "start": "nodemon --exec babel-node app.js",
     "lint": "./node_modules/.bin/eslint app.js",
-    "test": "nyc mocha  --require @babel/register --require @babel/polyfill -w --timeout 5000",
-    "coverage": "cross-env NODE_ENV= test nyc report --reporter=text-lcov | coveralls npm test"
+    "test:cover": "cross-env NODE_ENV=test nyc npm test",
+    "test": "cross-env NODE_ENV=test nyc --require @babel/register --require @babel/polyfill mocha --timeout 5000",
+    "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text-lcov mocha"
   },
+  "nyc": {
+    "require": [
+      "@babel/register", "@babel/polyfill"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  
   "author": "",
   "license": "ISC",
   "devDependencies": {
