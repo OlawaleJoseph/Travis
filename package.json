@@ -9,7 +9,7 @@
     "start": "nodemon --exec babel-node app.js",
     "lint": "./node_modules/.bin/eslint app.js",
     "test": "nyc mocha  --require @babel/register --require @babel/polyfill -w --timeout 5000",
-    "coverage": "cross-env NODE_ENV= test nyc report --reporter=text-lcov | coveralls npm test"
+    "coverage": "cross-env NODE_ENV=test nyc report --reporter=text-lcov | coverage npm test"
   },
   "author": "",
   "license": "ISC",
