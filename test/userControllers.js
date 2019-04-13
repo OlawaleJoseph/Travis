@@ -293,7 +293,7 @@ describe("User Controllers", () => {
     describe("PATCH/me Should get a specific user", () => {
         it("Should update user's password", () => {
             chai.request(server)
-            .patch('/api/v1/users/auth/me')
+            .patch('/api/v1/auth/me')
             .set("x-access-token", token)
             .end((err, res) => {
                 assert.isObject(res.body, "Response body should be an object");

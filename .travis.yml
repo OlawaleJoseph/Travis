@@ -1,13 +1,22 @@
 language: node_js
 node_js:
   - node
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - npm run test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
 
 after_success:
   - npm run coverage
   
 env:
   global:
+  - CC_TEST_REPORTER_ID=9a49f0528b3207dca1be00da65879ec0c1e105d3a7b4324e81892b139b6f6de1
   - secure: NXZoiV9nnAK2S3TNbDrrrd7SipAQucvGUrwB4tT1Q1Bfkfwi4iDxQX4/0t27GxYHKl5WjSZpY9UzmnAKu3rX/dxA1OEvhxbF73Iwq2NU8TbttS1Lq18U6NIzXXcUDp6iTDm7ramUU0qyWQ50DIQwrol5awKHuTYDAi5FDoJgu9FOHaj8z8NwEyMifBcxDl5UeMilKs7k7Y03IUZUBZGB+UXCmkoOoWLtjQNRnW39g3r+8rRucaDWq40yZxRxCH68qHAYvIG1eEHY+iSTcVRegRI2vvWNRxsqPN7tWluMuAaAv8+rbgQCcXKdi62n1Tlv9bWs0KqY5tr0qXACCBk7k5SHBdzr/bIqEXuYvyVdomDCjarBvnTgjseQNxKuVzcp9nIPMQHyx77f9T9EaPwQZXSItUbfB5uos3ttG61AmG4U0etvXgkcgHvFwtTR6nMy9EzioC34Ez8N38uMoTeEf2q74pbPxLgInyXxm5GM+37kitzZYUxE0KDp1d7qZSTAaHAGPWXK4gDMigaCeliCRSrBttEn/VurPoEq7MC23mod0/vlFaJiJP9/cC4TCOgNQzuYJCnlzl0DpxuULViw8CLL4qpyWy59rszkJbzrUrUOC1R1HOaXus5rapcxWkyFb4+oRTxJLhRyIOUhBgTIHXuuhTniUxLKf29jwDJsDtM=
   - secure: OlNpdkp2hQ6FNnd2oZGbo56B6eT/1mwJSJcoLaJyJBvm+qBLg3F3CdH+PUhRpSp3ITGuecTPuy0IPcnOMCAb4zFAJU0xKV5ryM2L4nYsVxGQqQ3MLORz0ieq9UkoJgLvTwp5IEqNEkzjZxTebxQA98AUMe2d9Kd9UY7TFp1MpRvtCrND2n0Ic4DBMu6NDohnPc4eH/ly1vyGO1AIUqM/q5lYVHQjxnrr+28i6KvHcwEpYUsj1GONwiieUVhBpo3m4sH74Y7unnPTwJ6O9pMIVSyXTVk0g/1umDGtOZGStFS5Odg6JbqXl0Ja5r/yP1XmuAMatNjicYa3V755Us6ZrR5ycTMppxNVWTKvmU6eGz/rbftjyVjXruF6heHwaUoMBluieBLs6wcp+pg4zQrmU228qQ6lrXe1vfdZsJHLQ5SWzNMYdcVW3FxUTnPPwzgcb8KjGPQMtGGpZD4X3oIAJklMPoOpis3D1Jb/oKiFJ47pqiuORmsh83mfmIO1LnTZMb5F71MaXQ/702X8TH9CHz4cKHr1mp0olPEnQwcTqRqOXYKzl9ct3S8L7OmoWUjMB1Q1ILepNtUV/Bpu+rD6bsQRIXIMJWs0SzgWhetyHqnFFR1sTnHZbLhatcRyrxSO3IfB1B26AMvbzKyEkyYrgmHuvnwWKFbUfbzAykToFVc=

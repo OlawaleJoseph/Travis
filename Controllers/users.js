@@ -96,7 +96,7 @@ router.get('/auth/me', validateToken, (req, res) => {
 
 
 router.patch('/auth/me', validateToken, (req, res) => {
-  const user = userModel.updateUser(req.params.email, req.body.password);
+  const user = userModel.updateUser(req.user.email, req.body.password);
   res.status(200).json({
     "status": 200,
     "message": "Password Changed Successfully"

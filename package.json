@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "babel-node app.js --out-dir build",
+    "build": "babel app.js --out-dir build",
     "dev-start": "babel-watch app.js",
     "start": "nodemon --exec babel-node app.js",
     "lint": "./node_modules/.bin/eslint app.js",
